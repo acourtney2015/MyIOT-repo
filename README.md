@@ -10,8 +10,8 @@ Connecting a device button using AWS and Slack to tell your crew it is o'beer th
 The initial process from Hacksterio goes like this:  
 
 An AWS IoT button is attached to the beer fridge.  
-When it's party time, then tap this button.  A message will be sent by the button's wifi connection up into the cloud to the AWS IoT platform which in turn will invoke a Node.js Lambda function.  
-This Lambda function will fetch a random animated gif from the Giphy API and post it into a Slack channel.  
+When it's party time, tap your device button.  A message will be sent by the button's wifi connection to the cloud to the AWS IoT platform which in turn will invoke a Node.js Lambda function.  
+The Lambda function will fetch a random animated gif from the Giphy API and post it into your Slack channel.  
 All subscribers of the Slack channel will get a notification informing them that it's beer o'clock, party time!
 
 I will use this repo to play with the code and try to make something new.....Let the fun begin
