@@ -1,2 +1,16 @@
 Go here to create the web hook [Create Slack Incoming webhook]( https://slack.com/apps/A0F7XDUAZ-incoming-webhooks)
 copy the URL you create and paste in a file to use to connect to Slack
+
+Incoming Webhooks are a simple way to post messages from external sources into Slack.
+They make use of normal HTTP requests with a JSON payload, which includes the message and a few other optional details.
+TeamTest at https://teamtest-space.slack.com
+
+https://hooks.slack.com/services/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
+
+
+
+To create a link in your text, enclose the URL in <> angle brackets. For example: payload={"text": "<https://slack.com>"} will post a clickable link to https://slack.com. To display hyperlinked text instead of the actual URL, use the pipe character, as shown in this example:
+payload={"text": "A very important thing has occurred! <https://alert-system.com/alerts/1234|Click here> for details!"}
+This will be displayed in the channel as:
+![Slack text image](https://a.slack-edge.com/66f9/img/integrations/incoming_webhook_example2.png)
+
