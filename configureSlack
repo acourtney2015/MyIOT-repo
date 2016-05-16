@@ -1,6 +1,11 @@
 Go here to create the web hook [Create Slack Incoming webhook]( https://slack.com/apps/A0F7XDUAZ-incoming-webhooks)
 copy the URL you create and paste in a file to use to connect to Slack
 
+In Slack you can quickly create a gipy to put into a channel message you send just type: /giphy your word   amd the gif will pop up
+in your message.
+Here we will make a webook to do the same through the dev code:
+
+
 Incoming Webhooks are a simple way to post messages from external sources into Slack.
 They make use of normal HTTP requests with a JSON payload, which includes the message and a few other optional details.
 TeamTest at https://teamtest-space.slack.com
