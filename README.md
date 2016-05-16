@@ -2,7 +2,7 @@
 A repo to hold my internet of things code
 
 
-![computer gif](http://gph.is/1zUWGEU)
+![computer gif](http://gph.to/1Nvd1xA)
 
 
 Some of the code in this repo was originally found from Hacksterio https://www.hackster.io/DeanJezard/the-connected-beer-fridge-853b27?ref=part&ref_id=13747&offset=0
