@@ -1,0 +1,61 @@
+goto: https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions
+create a new function. Under blueprint at botton click "skip" 
+Choose your gif from giphy: https://giphy.com/search/computer  Click on the one you like;grab the giphy link under the advanced tab. 
+Add to the node.js code below along with the slack URL code 
+
+
+var http = require('http');
+var https = require('https');
+var fs = require('fs');
+exports.handler = function(event, context) {
+    console.info('Received event', event);
+    var post_data ='';
+    //get a random image from Giphy
+    var request = http.get("http://gph.is/1zUWGEUapi_key=dc6zaTOxFJmzC&", function(response){
+        console.log(response.statusCode);
+        //Read the Data
+        response.on('data', function (chunk) {
+            var parsed = JSON.parse(chunk);
+            var image_url = parsed.data.fixed_height_downsampled_url;
+            console.log('image_url='+image_url);
+             // package up body
+            var resp = {};
+            resp.text = "Check this code";
+            resp.attachments = [];
+            var info = {
+                    'image_url': image_url
+                };
+            resp.attachments.push(info);
+            post_data = JSON.stringify(resp); 
+            console.log('post_data='+post_data);
+        // an object of options to indicate where to post to
+        var post_options = {
+            host: 'hooks.slack.com',
+            port: '443',
+            path: '/services/xxxxxxx/xxxxxxx/xxxxxxxxxxxxxxxxx',
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Content-Length': post_data.length
+            }
+        };
+        //setup the post request
+        var post_request = https.request(post_options, function(res) {
+            var body = '';
+            res.on('data', function(chunk)  {
+                body += chunk;
+            });
+            res.on('end', function() {
+                context.done(body);
+            });
+            res.on('error', function(e) {
+                context.fail('error:' + e.message);
+            });
+        });
+        // post the data
+        post_request.write(post_data);
+        post_request.end();
+        context.succeed("posted image");
+        });
+    });
+};
